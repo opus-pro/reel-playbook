@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: script-check-value-lost
+expected_outcome: |
+  A check.md that runs the script check on a concept that already passed the gate. It re-scores the
+  script and flags the dimensions that dropped: the answer is given away in the first line, wrapped in
+  jargon and a list of numbers, so no expectation is set up and broken (Surprise and Click fall); there
+  is no plain sentence a viewer would repeat when sending it (the share line is missing, so check.md
+  writes one); and the ending is a like-and-subscribe ask instead of the bigger question the concept
+  promised. The verdict is FIX, not KILL, with each fix given as a line to add, cut or move. The
+  greeting and hook wording are left to Hooks rather than counted against the topic.

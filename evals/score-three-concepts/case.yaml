@@ -1,0 +1,12 @@
+schema_version: "1.1"
+name: score-three-concepts
+expected_outcome: |
+  A scores.md that scores three concepts on the entertainment rubric, each with a total out of 100,
+  Aha / Share / More out of 10, a Before -> After line, a share message (or a plain statement that
+  none can be written), a profile and a verdict. The dog-mayor concept ranks first and is the only
+  one that could be greenlit. Because the story is widely covered, REWORK is also right for it if the
+  reason is named (usually Fresh) and the re-angles keep Rabbit Hash; it is never killed. The
+  cozy-town tour is named a like trap (pleasant, low surprise, nothing to send) and gets KILL, or
+  REWORK with three re-angles. The Mongolian-rivers list is killed or reworked because hardly anyone
+  cares, not because of how it would be filmed. Scores judge the idea, not hook wording or
+  production, and no view counts are predicted.

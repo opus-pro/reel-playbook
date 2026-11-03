@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+body { height:920px; background:var(--purple); position:relative; padding:50px 60px; }
+.burst { position:absolute; inset:-500px; background:repeating-conic-gradient(from 0deg at 50% 30%, #8A62FF 0 9deg, var(--purple) 9deg 18deg); }
+.head { position:relative; }
+.strip { position:absolute; left:60px; top:330px; width:1480px; height:150px; display:flex; gap:8px; }
+.seg { background:var(--cream); border:6px solid var(--ink); border-radius:20px; display:flex; align-items:center; justify-content:center; font-family:'Lilita One',sans-serif; font-size:34px; text-align:center; line-height:1.05; }
+.hook { background:var(--coral); color:#fff; flex:2.2; font-size:44px; }
+.beat { flex:2; color:var(--muted); }
+.re { background:var(--yellow); flex:1.15; font-size:29px; }
+.pay { background:var(--mint); flex:2; font-size:40px; }
+.axis { position:absolute; left:60px; top:492px; width:1480px; display:flex; justify-content:space-between; color:var(--cream); font-size:30px; font-weight:600; }
+.loop { position:absolute; left:0; top:0; }
+.cards { position:absolute; left:60px; top:560px; width:1480px; display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+.c { padding:26px 30px; height:310px; }
+.c h3 { font-family:'Lilita One',sans-serif; font-weight:400; font-size:50px; line-height:1; margin-bottom:12px; }
+.c p { font-size:31px; font-weight:500; line-height:1.22; }
+</style></head><body><div class="burst"></div>
+<div class="head"><div class="title outline">The formula most tutorials stop short of</div></div>
+<svg class="loop" width="1600" height="920"><path d="M1440 324 C 1440 196, 170 196, 170 318" fill="none" stroke="#17133F" stroke-width="22" stroke-linecap="round"/><path d="M1440 324 C 1440 196, 170 196, 170 318" fill="none" stroke="#FFD21F" stroke-width="10" stroke-linecap="round"/><path d="M136 282 L170 326 L204 282" fill="none" stroke="#17133F" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M136 282 L170 326 L204 282" fill="none" stroke="#FFD21F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div class="chip" style="position:absolute;left:640px;top:188px;background:var(--yellow)">The last moment reads back into the first</div>
+<div class="strip"><div class="seg hook">HOOK</div><div class="seg beat">beat</div><div class="seg re">RE-<br>HOOK</div><div class="seg beat">beat</div><div class="seg re">RE-<br>HOOK</div><div class="seg beat">beat</div><div class="seg pay">PAYOFF</div></div>
+<div class="axis"><span>First frame</span><span>A rehook about every 5 to 8 seconds</span><span>Cut on the answer</span></div>
+<div class="cards">
+<div class="card c"><h3>Hook</h3><p>Stops the thumb in the first 3 seconds. The line, the first frame and the on-screen text all point at one question.</p></div>
+<div class="card c"><h3>Rehooks</h3><p>Every answered question is an exit. Close that one and open the next: "It held. But that was only rain."</p></div>
+<div class="card c"><h3>Ending</h3><p>Stops on the payoff with no outro or fade, so the replay feels like part of the video.</p></div>
+</div>
+</body></html>

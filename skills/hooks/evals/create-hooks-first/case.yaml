@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: create-hooks-first
+expected_outcome: |
+  A brief.md that turns the topic into a story with stakes before writing anything else, offers at
+  least 10 scored hook packages (spoken line, first frame, on-screen text, payoff preview) drawn from
+  at least four hook types, picks one, and builds the beat sheet backwards from that hook's payoff:
+  frame 1 at 0.0s, hook line in about 2s, a payoff preview around 1-2.5s, a mechanism in the middle
+  with a rehook at each seam, and an abrupt ending. The script is plain enough for a 10-year-old, has
+  no greeting or filler, and fits about 30 seconds.

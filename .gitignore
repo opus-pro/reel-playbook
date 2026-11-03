@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+tests/out/
+*.hooks/
+hooks-workspace/
+topics-workspace/
+.DS_Store
+calibration/
+evals/results/
+.claude/launch.json

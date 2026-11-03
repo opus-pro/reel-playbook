@@ -1,0 +1,13 @@
+schema_version: "1.1"
+name: scout-from-research
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  A board.md and a concepts.md built only from the saved research in research/. The board lists
+  candidates, each with the research signal (and its date) that put it there, and filters them on who
+  cares, freshness and room for an aha. It treats the channel's own outlier (the crow that remembered
+  a face) and its comments as demand to serve again with a new angle (crows teaching grudges to their
+  young, magpie funerals, being nice to crows) rather than remaking it, treats animal mayors as
+  crowded with five recent breakouts, and does not re-propose topics the channel has already made.
+  concepts.md has at least four concept cards, each with a Before -> After line, a share message with
+  recipient and motive, the bigger question or episode 2, dated evidence, and risks to verify.

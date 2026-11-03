@@ -1,0 +1,11 @@
+schema_version: "1.1"
+name: review-planted-defects
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  A review.md with a verdict that is not POST, a weighted score, and ranked fixes. It catches the
+  planted defects: the black first frame (a blocker), the 2-frame red flash at about 5.0s, the frozen
+  picture at 12-14s, the dissolve at 14-15s, the letterboxed shot from about 15s, the fade to black,
+  the silent start, the dead air at 20-21s and the dead tail. It flags the greeting and filler in the
+  captions, rewrites the hook, and notes that nothing in the middle opens a new question (no
+  rehooks). Findings cite timestamps or frames, and there is a log of every cut.

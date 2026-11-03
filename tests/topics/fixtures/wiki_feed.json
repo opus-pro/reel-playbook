@@ -1,0 +1,16 @@
+{
+  "mostread": {
+    "date": "2026-10-31Z",
+    "articles": [
+      {"titles": {"normalized": "Halloween"}, "views": 203000, "extract": "Halloween is a celebration observed in many countries on 31 October."},
+      {"titles": {"normalized": "Daylight saving time"}, "views": 150000, "extract": "Daylight saving time is the practice of advancing clocks."}
+    ]
+  },
+  "dyk": [
+    {"html": "... that a <a href=\"./Dog\">dog</a> has served as honorary mayor of a town for three terms?", "text": ""},
+    {"html": "", "text": "... that octopuses   taste with their arms?"}
+  ],
+  "news": [
+    {"story": "<!--Nov 1-->A <a href=\"./Comet\">comet</a> becomes visible to the naked eye."}
+  ]
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:ht="https://trends.google.com/trending/rss" version="2.0">
+	<channel>
+		<title>Daily Search Trends</title>
+		<description>Recent searches</description>
+		<link>https://trends.google.com/trending/rss?geo=US</link>
+		<item>
+			<title>town elects dog</title>
+			<ht:approx_traffic>20000+</ht:approx_traffic>
+			<description/>
+			<link>https://trends.google.com/trending/rss?geo=US</link>
+			<pubDate>Sun, 1 Nov 2026 10:20:00 -0800</pubDate>
+			<ht:news_item>
+				<ht:news_item_title>Small town re-elects its dog for a fourth term</ht:news_item_title>
+				<ht:news_item_snippet/>
+				<ht:news_item_url>https://example.com/dog-term</ht:news_item_url>
+				<ht:news_item_source>Example News</ht:news_item_source>
+			</ht:news_item>
+			<ht:news_item>
+				<ht:news_item_title>Second headline</ht:news_item_title>
+				<ht:news_item_url>https://example.com/second</ht:news_item_url>
+				<ht:news_item_source>Other</ht:news_item_source>
+			</ht:news_item>
+		</item>
+		<item>
+			<title>daylight saving</title>
+			<ht:approx_traffic>500000+</ht:approx_traffic>
+			<pubDate>Sun, 1 Nov 2026 02:00:00 -0800</pubDate>
+		</item>
+	</channel>
+</rss>

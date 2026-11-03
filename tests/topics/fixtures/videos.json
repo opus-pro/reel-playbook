@@ -1,0 +1,17 @@
+[
+  {"id": "breakout1", "title": "The dog that runs a town", "channel": "Odd Jobs", "webpage_url": "https://www.youtube.com/shorts/breakout1",
+   "duration": 34, "upload_date": "20261023", "view_count": 2000000, "channel_follower_count": 100000,
+   "like_count": 120000, "comment_count": 3000},
+  {"id": "inaudience1", "title": "Town news roundup", "channel": "Big News", "webpage_url": "https://www.youtube.com/shorts/inaudience1",
+   "duration": 50, "upload_date": "20261001", "view_count": 50000, "channel_follower_count": 1000000,
+   "like_count": 900, "comment_count": 40},
+  {"id": "tiny1", "title": "my dog is mayor lol", "channel": "Tiny", "webpage_url": "https://www.youtube.com/shorts/tiny1",
+   "duration": 20, "upload_date": "20260101", "view_count": 5000, "channel_follower_count": 8,
+   "like_count": 25, "comment_count": 2},
+  {"id": "mid1", "title": "Why towns elect animals", "channel": "Civics", "webpage_url": "https://www.youtube.com/shorts/mid1",
+   "duration": 45, "upload_date": "20261101", "view_count": 300000, "channel_follower_count": 150000,
+   "like_count": 15000, "comment_count": 600},
+  {"id": "nosubs1", "title": "Hidden subscriber count", "channel": "Private", "webpage_url": "https://www.youtube.com/shorts/nosubs1",
+   "duration": 30, "upload_date": null, "view_count": 80000, "channel_follower_count": null,
+   "like_count": null, "comment_count": null}
+]

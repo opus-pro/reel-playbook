@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=block');
+:root { --ink:#17133F; --cream:#FFF9EC; --cream2:#F2E8D5; --coral:#FF5B4A; --yellow:#FFD21F; --sky:#3FC1FF; --purple:#7A4DFF; --mint:#4FD8B0; --muted:#5B5675; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { width:1600px; overflow:hidden; font-family:'Fredoka',sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+.display { font-family:'Lilita One',sans-serif; font-weight:400; }
+.card { background:var(--cream); border:6px solid var(--ink); border-radius:32px; box-shadow:9px 9px 0 var(--ink); }
+.title { font-family:'Lilita One',sans-serif; font-size:76px; line-height:1.05; }
+.sub { font-size:36px; font-weight:500; line-height:1.25; }
+.outline { color:var(--cream); -webkit-text-stroke:12px var(--ink); paint-order:stroke fill; }
+.chip { display:inline-flex; align-items:center; gap:14px; padding:8px 24px; border:5px solid var(--ink); border-radius:999px; font-weight:600; font-size:30px; background:var(--cream); }
