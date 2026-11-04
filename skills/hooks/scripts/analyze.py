@@ -103,6 +103,52 @@ def find_font(user_font: str | None) -> str | None:
     return None
 
 
+def has_drawtext() -> bool:
+    """Stock Homebrew ffmpeg leaves out the drawtext filter."""
+    return re.search(r"\bdrawtext\b", run(["ffmpeg", "-hide_banner", "-filters"], check=False).stdout) is not None
+
+
+# 5x7 bitmap glyphs for tile labels on an ffmpeg without drawtext.
+GLYPHS = {
+    "0": "01110 10001 10011 10101 11001 10001 01110", "1": "00100 01100 00100 00100 00100 00100 01110",
+    "2": "01110 10001 00001 00010 00100 01000 11111", "3": "11110 00001 00001 01110 00001 00001 11110",
+    "4": "00010 00110 01010 10010 11111 00010 00010", "5": "11111 10000 11110 00001 00001 10001 01110",
+    "6": "00110 01000 10000 11110 10001 10001 01110", "7": "11111 00001 00010 00100 01000 01000 01000",
+    "8": "01110 10001 10001 01110 10001 10001 01110", "9": "01110 10001 10001 01111 00001 00010 01100",
+    ":": "00000 00100 00100 00000 00100 00100 00000", ".": "00000 00000 00000 00000 00000 01100 01100",
+    "f": "00011 00100 01110 00100 00100 00100 00100",
+}
+
+
+def stamp_label(ppm: Path, text: str, scale: int = 2) -> None:
+    """Draw a white-on-black label into the top-left corner of a binary PPM frame."""
+    data = bytearray(ppm.read_bytes())
+    m = re.match(rb"P6\s+(\d+)\s+(\d+)\s+255\s", data)
+    w, h = int(m[1]), int(m[2])
+    base, x0, y0, pad = m.end(), 6, 6, 4
+    box_w = min(w - x0, len(text) * 6 * scale + 2 * pad)
+    for y in range(y0, min(h, y0 + 7 * scale + 2 * pad)):
+        start = base + 3 * (y * w + x0)
+        data[start:start + 3 * box_w] = bytes(3 * box_w)
+    for n, ch in enumerate(text):
+        for gy, row in enumerate(GLYPHS.get(ch, "").split()):
+            for gx, bit in enumerate(row):
+                if bit != "1":
+                    continue
+                for yy in range(scale):
+                    for xx in range(scale):
+                        px = x0 + pad + n * 6 * scale + gx * scale + xx
+                        py = y0 + pad + gy * scale + yy
+                        if px < w and py < h:
+                            start = base + 3 * (py * w + px)
+                            data[start:start + 3] = b"\xff\xff\xff"
+    ppm.write_bytes(data)
+
+
+def fmt_hms(t: float) -> str:
+    return f"{int(t // 3600):02d}:{int(t % 3600 // 60):02d}:{t % 60:06.3f}"
+
+
 def fmt_t(t: float) -> str:
     return f"{t:5.2f}s"
 
@@ -528,13 +574,17 @@ def runs(mask: list[bool]) -> list[tuple[int, int]]:
 
 # ---------------------------------------------------------------- images
 
-def extract_tiles(video: Path, work: Path, idx: list[int], font: str | None) -> dict[int, Path]:
+def extract_tiles(video: Path, work: Path, idx: list[int], font: str | None, times: list[float]) -> dict[int, Path]:
     tiles = work / "frames" / "tiles"
     tiles.mkdir(parents=True, exist_ok=True)
-    for old in tiles.glob("*.png"):
+    for old in tiles.iterdir():
         old.unlink()
+    # Findings cite the time and frame on the tile, so every tile gets a label: drawn by ffmpeg
+    # when it can, otherwise stamped here onto uncompressed frames.
+    drawn = bool(font) and has_drawtext()
+    ext = "png" if drawn else "ppm"
     label = ""
-    if font:
+    if drawn:
         label = (f",drawtext=fontfile='{esc(font)}':text='%{{pts\\:hms}}  f%{{n}}':x=6:y=6:fontsize=15"
                  ":fontcolor=white:box=1:boxcolor=black@0.65:boxborderw=4")
     # ffmpeg's expression parser rejects very long sums, so split the wanted frames into
@@ -546,13 +596,15 @@ def extract_tiles(video: Path, work: Path, idx: list[int], font: str | None) -> 
         graph += f";[s{j}]select='" + "+".join(f"eq(n\\,{i})" for i in ch) + f"'[o{j}]"
     cmd = ["ffmpeg", "-hide_banner", "-v", "error", "-y", "-i", video, "-filter_complex", graph]
     for j in range(len(chunks)):
-        cmd += ["-map", f"[o{j}]", "-fps_mode", "passthrough", f"frames/tiles/c{j:03d}_%05d.png"]
+        cmd += ["-map", f"[o{j}]", "-fps_mode", "passthrough", f"frames/tiles/c{j:03d}_%05d.{ext}"]
     run(cmd, cwd=work)
     out = {}
     for j, ch in enumerate(chunks):
-        for i, p in zip(ch, sorted(tiles.glob(f"c{j:03d}_*.png"))):
-            dest = tiles / f"f{i:06d}.png"
+        for i, p in zip(ch, sorted(tiles.glob(f"c{j:03d}_*.{ext}"))):
+            dest = tiles / f"f{i:06d}.{ext}"
             p.replace(dest)
+            if not drawn:
+                stamp_label(dest, f"{fmt_hms(times[i])}  f{i}")
             out[i] = dest
     return out
 
@@ -598,7 +650,7 @@ def spans_only(video: Path, work: Path, args) -> list[str]:
     with open(fcsv, encoding="utf-8") as fh:
         times = [float(r["t"]) for r in csv.DictReader(fh)]
     span_sets = parse_spans(args.span, times)
-    tiles = extract_tiles(video, work, sorted({i for _, _, ids in span_sets for i in ids}), find_font(args.font))
+    tiles = extract_tiles(video, work, sorted({i for _, _, ids in span_sets for i in ids}), find_font(args.font), times)
     made = []
     for a, b, ids in span_sets:
         made += make_sheets(f"span_{a:05.2f}-{b:05.2f}", ids, tiles, 5, 3, work)
@@ -1006,7 +1058,7 @@ def analyze(args) -> dict:
         want |= set(r)
     for _, _, ids in span_sets:
         want |= set(ids)
-    tiles = extract_tiles(video, work, sorted(want), font)
+    tiles = extract_tiles(video, work, sorted(want), font, times)
     # Sheets stay within 1568 px on the long edge so image viewers show them unscaled.
     sheets = {
         "hook": make_sheets("hook", hook_idx, tiles, 5, 3, work),
@@ -1259,8 +1311,6 @@ def render_md(r: dict, seconds: list[dict]) -> str:
             order += [(s, f"every frame, {k[5:]}s") for s in v]
     for n, (f, why) in enumerate(order, 1):
         add(f"{n}. `{f}`: {why}")
-    if not r["font"]:
-        add("\nNo font was found, so tiles have no time labels. Pass `--font path/to/font.ttf`.")
     return "\n".join(L) + "\n"
 
 
@@ -1285,7 +1335,7 @@ def main() -> None:
     ap.add_argument("--hook-fps", type=float, default=10.0, help="frames per second sampled in the first 3s")
     ap.add_argument("--sheet-fps", type=float, default=2.0, help="frames per second on the timeline sheets")
     ap.add_argument("--target-seconds", type=float, help="target length (default 33.5)")
-    ap.add_argument("--font", help="font file for tile labels")
+    ap.add_argument("--font", help="font file for tile labels, used when ffmpeg has the drawtext filter")
     a = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")

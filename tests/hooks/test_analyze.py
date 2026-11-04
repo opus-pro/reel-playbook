@@ -47,6 +47,21 @@ class AnalyzerTest(unittest.TestCase):
                         "--transcript", str(OUT / "fixture.srt"), "--span", "4.9-5.2", "--edits", "20.0"], check=True)
         cls.report = json.loads((OUT / "review" / "report.json").read_text(encoding="utf-8"))
 
+    def test_label_stamped_without_drawtext(self):
+        sys.path.insert(0, str(ANALYZE.parent))
+        import analyze
+        header = b"P6\n270 60\n255\n"
+        ppm = OUT / "label.ppm"
+        ppm.write_bytes(header + bytes([120]) * (270 * 60 * 3))
+        analyze.stamp_label(ppm, "00:00:07.133  f214")
+        data = ppm.read_bytes()
+        self.assertEqual(len(data), len(header) + 270 * 60 * 3)
+        px = data[len(header):]
+        self.assertIn(b"\xff\xff\xff", px, "label text missing")
+        self.assertIn(bytes(3), px, "label box missing")
+        self.assertEqual(px[-3:], bytes([120]) * 3, "the rest of the frame must not change")
+        ppm.unlink()
+
     def test_given_edit_point_logged(self):
         given = [e for e in self.report["edits"] if "given" in e["kind"]]
         self.assertTrue(any(abs(e["t"] - 20.0) < 0.05 for e in given), f"edits: {self.report['edits']}")
