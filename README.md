@@ -243,7 +243,7 @@ python tests/hooks/test_analyze.py
 
 The test builds a 36-second video with defects planted at known times, then checks that the analyzer finds each one at the right time. Rebuild the README images with `docs/assets/src/render.sh`.
 
-Contributions are welcome, especially calibration data (a flag that fired wrongly, or a problem it missed, with the clip if you can share it), platform safe-zone updates, and language support beyond English.
+Contributions are welcome, especially calibration data (a flag that fired wrongly, or a problem it missed, with the clip if you can share it), platform safe-zone updates, and language support beyond English. See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 </details>
 
