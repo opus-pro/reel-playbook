@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/assets/hero.png" alt="Claude made you a great video. So why did nobody watch? shorts-hook-skill: free agent skills that fix the topic, the script and the hook of your YouTube Shorts, TikToks and Reels." width="100%">
+  <img src="docs/assets/hero.png" alt="Claude made you a great video. So why did nobody watch? Reel Playbook: free agent skills that fix the topic, the script and the hook of your YouTube Shorts, TikToks and Reels." width="100%">
 </p>
 
-<h1 align="center">shorts-hook-skill</h1>
+<h1 align="center">Reel Playbook</h1>
 
 <p align="center">
   <strong>Free Claude skills that write and review YouTube Shorts, TikToks and Instagram Reels people keep watching.</strong><br>
@@ -29,11 +29,11 @@ You had Claude make a video. The script reads fine. The visuals look great. Nobo
 ## Install in 30 seconds
 
 ```bash
-claude plugin marketplace add opus-pro/shorts-hook-skill
+claude plugin marketplace add opus-pro/reel-playbook
 ```
 
 ```bash
-claude plugin install shorts-hook-skill@shorts-hook-skill
+claude plugin install reel-playbook@reel-playbook
 ```
 
 Then just ask:
@@ -157,12 +157,12 @@ Sources are paraphrased and credited in [`method.md`](skills/hooks/references/me
 <details>
 <summary><strong>Install options</strong></summary>
 
-**Claude Code plugin:** the two commands above give you `shorts-hook-skill:hooks` and `shorts-hook-skill:topics`.
+**Claude Code plugin:** the two commands above give you `reel-playbook:hooks` and `reel-playbook:topics`.
 
 **From a local copy:** run this from the folder that holds this one, then install as above.
 
 ```bash
-claude plugin marketplace add ./shorts-hook-skill
+claude plugin marketplace add ./reel-playbook
 ```
 
 **Copy a skill:** copy `skills/hooks/` or `skills/topics/` into `~/.claude/skills/` for every project, or into `.claude/skills/` for one project.
