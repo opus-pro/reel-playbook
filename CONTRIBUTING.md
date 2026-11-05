@@ -1,4 +1,4 @@
-# Contributing to Reel Playbook
+# Contributing to Reel Runbook
 
 Thanks for helping out. A good change here makes the advice more accurate or the tools more reliable.
 

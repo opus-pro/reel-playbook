@@ -1,21 +1,28 @@
 {
-  "name": "reel-playbook",
+  "name": "reel-runbook",
   "description": "Free Claude skills that write and review YouTube Shorts, TikToks and Instagram Reels people keep watching: hooks, rehooks, loop endings, topic research and frame-by-frame video review.",
   "owner": {
-    "name": "reel-playbook contributors"
+    "name": "reel-runbook contributors"
   },
   "plugins": [
     {
-      "name": "reel-playbook",
+      "name": "reel-runbook",
       "source": "./",
       "description": "Free Claude skills that write and review YouTube Shorts, TikToks and Instagram Reels people keep watching: hooks, rehooks, loop endings, topic research and frame-by-frame video review.",
       "version": "0.1.0",
       "category": "productivity"
     },
     {
+      "name": "reel-playbook",
+      "source": "./",
+      "description": "Old name of reel-runbook, kept so existing installs keep working. New installs: use reel-runbook.",
+      "version": "0.1.0",
+      "category": "productivity"
+    },
+    {
       "name": "shorts-hook-skill",
       "source": "./",
-      "description": "Old name of reel-playbook, kept so existing installs keep working. New installs: use reel-playbook.",
+      "description": "Old name of reel-runbook, kept so existing installs keep working. New installs: use reel-runbook.",
       "version": "0.1.0",
       "category": "productivity"
     }

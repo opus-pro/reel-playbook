@@ -1,9 +1,9 @@
 {
-  "name": "reel-playbook",
+  "name": "reel-runbook",
   "version": "0.1.0",
   "description": "Free Claude skills that write and review YouTube Shorts, TikToks and Instagram Reels people keep watching: hooks, rehooks, loop endings, topic research and frame-by-frame video review.",
   "author": {
-    "name": "reel-playbook contributors"
+    "name": "reel-runbook contributors"
   },
   "license": "MIT",
   "keywords": [

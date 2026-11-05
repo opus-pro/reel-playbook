@@ -87,14 +87,14 @@ Shorts, trends and the web, and the creator's own Insights feed the Learn step.
 
 ## Install
 
-Topics ships in the same plugin as Hooks. From the folder that holds this `reel-playbook` folder (unzipped or cloned):
+Topics ships in the same plugin as Hooks. From the folder that holds this `reel-runbook` folder (unzipped or cloned):
 
 ```bash
-claude plugin marketplace add ./reel-playbook
+claude plugin marketplace add ./reel-runbook
 ```
 
 ```bash
-claude plugin install reel-playbook@reel-playbook
+claude plugin install reel-runbook@reel-runbook
 ```
 
 **Claude Code (copy the skill):** copy `skills/topics/` into `~/.claude/skills/` for every
