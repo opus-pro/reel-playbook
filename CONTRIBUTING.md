@@ -1,4 +1,4 @@
-# Contributing to shorts-hook-skill
+# Contributing to Reel Playbook
 
 Thanks for helping out. A good change here makes the advice more accurate or the tools more reliable.
 

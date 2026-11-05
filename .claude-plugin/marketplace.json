@@ -1,14 +1,21 @@
 {
-  "name": "shorts-hook-skill",
+  "name": "reel-playbook",
   "description": "Free Claude skills that write and review YouTube Shorts, TikToks and Instagram Reels people keep watching: hooks, rehooks, loop endings, topic research and frame-by-frame video review.",
   "owner": {
-    "name": "shorts-hook-skill contributors"
+    "name": "reel-playbook contributors"
   },
   "plugins": [
     {
-      "name": "shorts-hook-skill",
+      "name": "reel-playbook",
       "source": "./",
       "description": "Free Claude skills that write and review YouTube Shorts, TikToks and Instagram Reels people keep watching: hooks, rehooks, loop endings, topic research and frame-by-frame video review.",
+      "version": "0.1.0",
+      "category": "productivity"
+    },
+    {
+      "name": "shorts-hook-skill",
+      "source": "./",
+      "description": "Old name of reel-playbook, kept so existing installs keep working. New installs: use reel-playbook.",
       "version": "0.1.0",
       "category": "productivity"
     }
